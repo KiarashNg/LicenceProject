@@ -1,0 +1,86 @@
+﻿@model List<Behyab.Models.Doctor>
+@{
+    ViewBag.Title = "پزشکان";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="font-family:'B Mitra'">لیست پزشکان</h2>
+
+<div>
+    @Html.ActionLink("افزودن پزشک", "CreateDoc", new { name = "" }, new { @class = "btn btn-primary" })
+</div>
+<br />
+<table class="table" style="text-align:center;">
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Username)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().FirstName)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().LastName)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ExpertyId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ClinicId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().WeekId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ExpCode)
+        </th>
+
+        <th style="text-align:center;">
+            تغییرات
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr class="@item.Id">
+        <td>
+            @item.Username
+        </td>
+
+        <td>
+            @item.FirstName
+        </td>
+
+        <td>
+            @item.LastName
+        </td>
+
+        <td>
+            @item.Experty.Name
+        </td>
+
+        <td>
+            @item.Clinic.Name
+        </td>
+
+        <td>
+            @item.Week.Day
+        </td>
+
+        <td>
+            @item.ExpCode
+        </td>
+
+        <td>
+            @Html.ActionLink("ویرایش", "EditDoc", new { Id = item.Id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("حذف", "DeleteDoc", new { Id = item.Id }, new { onclick = "return confirm('آیا مطمئن فستید؟');", @class = "btn btn-danger" })
+        </td>
+    </tr>
+    }
+</table>
+

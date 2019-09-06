@@ -1,0 +1,63 @@
+﻿@model List<Behyab.Models.Users>
+@{
+    ViewBag.Title = "کاربران";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="font-family:'B Mitra'">لیست کاربران</h2>
+
+<div>
+@Html.ActionLink("افزودن کاربر", "CreateUser", new { name = "" }, new { @class = "btn btn-primary" })
+</div>
+
+<br />
+
+<table class="table" style="text-align:center;">
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Username)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Code)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Mobile)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().UserTypeId)
+        </th>
+
+        <th style="text-align:center;">
+            تغییرات
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr class="@item.Id">
+        <td>
+            @item.Username
+        </td>
+
+        <td>
+            @item.Code
+        </td>
+
+        <td>
+            @item.Mobile
+        </td>
+
+        <td>
+            @item.UserType.Name
+        </td>
+
+        <td>
+            @Html.ActionLink("ویرایش", "EditUser", new { Id = item.Id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("حذف", "DeleteUser", new { Id = item.Id }, new { onclick = "return confirm('آیا مطمئن فستید؟');", @class = "btn btn-danger" })
+        </td>
+    </tr>
+    }
+</table>

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - صفحه ادمین</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href='http://www.fontonline.ir/css/IranNastaliq.css' rel='stylesheet' type='text/css'>
+</head>
+<body style="direction:rtl; font-family:'B Mitra'; font-size:16px;">
+
+    <div class="container-fluid">
+        <center>
+            <img src="~/Content/img/1.jpg" class="img-responsive">
+            <div class="medical"><b>سامانه نوبت دهی آنلاین</b></div>
+        </center>
+    </div>
+
+    <div class="container-fluid">
+
+        <br />
+
+        <div class="navbar navbar-default">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("Index","Reservation")"><span class="fa fa-stethoscope"></span><b>  اخذ نوبت</b></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("Calendar","Reservation")"><span class="fa fa-ambulance"></span><b>  برنامه درمانگاه ها</b></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("FollowTime","Reservation")"><span class="fa fa-calendar"></span><b>  پیگیری نوبت</b></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("Cancel","Reservation")"><span class="fa fa-ban"></span><b>  لغو نوبت</b></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("Call","Reservation")"><span class="fa fa-phone"></span><b>  تماس با ما</b></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="@Url.Action("Logout","Reservation")"><span class="fa fa-outdent"></span><b>  خروج</b></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-left" style="margin-top:15px;">
+                <li><span class="fa fa-user"></span><b> @User.Identity.Name </b></li>
+            </ul>
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container body-content">
+        <div>
+            @RenderBody()
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - سامانه نوبت دهی آنلاین </p>
+        </footer>
+
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+    @RenderSection("Scripts", false)
+</body>
+</html>

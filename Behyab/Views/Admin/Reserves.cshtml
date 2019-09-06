@@ -1,0 +1,98 @@
+﻿@model List<Behyab.Models.Reserve>
+@{
+    ViewBag.Title = "نوبت ها";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="font-family:'B Mitra'">لیست نوبت ها</h2>
+
+<div>
+    @Html.ActionLink("افزودن نوبت", "CreateReserve", new { name = "" }, new { @class = "btn btn-primary" })
+</div>
+<br />
+<table class="table" style="text-align:center;">
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Status)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ClinicId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ExpertyId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().DoctorId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().UserCode)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Username)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().DateTime)
+        </th>
+
+        <th style="text-align:center;">
+            تغییرات
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr class="@item.Id">
+        @if (item.Status == true)
+        {
+            <td>
+                @Html.ActionLink("رزرو شده", "", new { name = "" }, new { @class = "btn btn-danger" })
+            </td>
+        }
+
+        @if (item.Status == false)
+        {
+            <td>
+                @Html.ActionLink("رزرو نشده", "", new { name = "" }, new { @class = "btn btn-success" })
+            </td>
+        }
+
+        <td>
+            @item.Clinic.Name
+        </td>
+
+        <td>
+            @item.Experty.Name
+        </td>
+
+        <td>
+            @item.Doctor.LastName
+        </td>
+
+        <td>
+            @item.UserCode
+        </td>
+
+        <td>
+            @item.Username
+        </td>
+
+        <td>
+            @item.DateTime
+        </td>
+
+        <td>
+            @Html.ActionLink("ویرایش", "EditReserve", new { Id = item.Id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("حذف", "DeleteReserve", new { Id = item.Id }, new { onclick = "return confirm('آیا مطمئن فستید؟');", @class = "btn btn-danger" })
+        </td>
+    </tr>
+    }
+</table>
+
+

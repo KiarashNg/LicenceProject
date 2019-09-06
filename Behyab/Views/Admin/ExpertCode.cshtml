@@ -1,0 +1,46 @@
+﻿@model List<Behyab.Models.ExpertCode>
+@{
+    ViewBag.Title = "شماره نظام پزشکی";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="font-family:'B Mitra'">لیست شماره نظام پزشکی</h2>
+
+<div>
+    @Html.ActionLink("افزودن شماره جدید", "CreateExpCode", new { name = "" }, new { @class = "btn btn-primary" })
+</div>
+<br />
+
+<table class="table" style="text-align:center;">
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Id)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Code)
+        </th>
+
+        <th style="text-align:center;">
+            تغییرات
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="@item.Id">
+            <td>
+                @item.Id
+            </td>
+
+            <td>
+                @item.Code
+            </td>
+
+            <td>
+                @Html.ActionLink("ویرایش", "EditExpCode", new { Id = item.Id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("حذف", "DeleteExpCode", new { Id = item.Id }, new { onclick = "return confirm('آیا مطمئن فستید؟');", @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+</table>

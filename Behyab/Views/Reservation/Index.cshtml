@@ -1,0 +1,105 @@
+﻿@model Behyab.Controllers.ReservationController.IndexViewModel
+@{
+    ViewBag.Title = "اخذ نوبت";
+    Layout = "~/Views/Shared/_LayoutLoggedInUser.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="col-lg-2" style="float:right;">
+
+    </div>
+
+    <div class="col-lg-4" style="float:right;">
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.Search.ExpertyId)
+            @Html.DropDownListFor(x => x.Search.ExpertyId, (SelectList)ViewBag.expert, "تخصص را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Search.ExpertyId)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.Search.ClinicId)
+            @Html.DropDownListFor(x => x.Search.ClinicId, (SelectList)ViewBag.clinic, "نام درمانگاه را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Search.ClinicId)
+        </div>
+    </div>
+
+    <div class="col-lg-4" style="float:right;">
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.Search.DoctorId)
+            @Html.DropDownListFor(x => x.Search.DoctorId, (List<SelectListItem>)ViewBag.doctor, "نام متخصص را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Search.DoctorId)
+        </div>
+
+        <div class="form-group">
+            <div>تاریخ</div>
+            
+            <input type="date" class="date-picker" />
+        </div>
+    </div>
+
+    <div class="col-lg-2" style="float:right;"></div>
+
+    <div class="form-group">
+        <input type="submit" value="جستجو" class="btn btn-primary" style="width:200px; margin-top:40px;"/>
+    </div>
+    
+
+   
+    <table class="table table-striped table-hover table-bordered" style="text-align:center;">
+        <tr>
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.Reserves.FirstOrDefault().Status)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.Reserves.FirstOrDefault().ExpertyId)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.Reserves.FirstOrDefault().ClinicId)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.Reserves.FirstOrDefault().DoctorId)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.Reserves.FirstOrDefault().DateTime)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Reserves)
+        {
+        <tr class="@item.Id">
+
+            @if (item.Status == true)
+            {
+            <td>
+                @Html.ActionLink("رزرو شده", "", new { name = "" }, new { @class = "btn btn-danger" })
+            </td>
+            }
+
+            @if (item.Status == false)
+            {
+                <td>
+                    @Html.ActionLink("اخذ نوبت","GetReserve",new { Id = item.Id},new { @class="btn btn-success"})
+                </td>
+            }
+
+            <td>@item.Experty.Name</td>
+
+            <td>@item.Clinic.Name</td>
+
+            <td>@item.Doctor.LastName</td>
+
+            <td>@item.DateTime</td>
+        </tr>
+        }
+        </table>
+
+}
+
+
+
+

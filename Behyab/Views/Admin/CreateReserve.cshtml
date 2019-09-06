@@ -1,0 +1,63 @@
+﻿@model Behyab.Models.Reserve
+@{
+    ViewBag.Title = "افزودن نوبت";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="font-family:'B Mitra'">افزودن نوبت</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="col-lg-6" style="float:right;">
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.UserCode)
+            @Html.DropDownListFor(x => x.UserCode, (SelectList)ViewBag.usercode, "کد ملی را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.UserCode)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Username)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.ClinicId)
+            @Html.DropDownListFor(x => x.ClinicId, (SelectList)ViewBag.clinic, "نام درمانگاه را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.ClinicId)
+        </div>
+
+    </div>
+
+    <div class="col-lg-6" style="float:right;">
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.ExpertyId)
+            @Html.DropDownListFor(x => x.ExpertyId, (SelectList)ViewBag.expert, "تخصص را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.ExpertyId)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.DoctorId)
+            @Html.DropDownListFor(x => x.DoctorId, (List<SelectListItem>)ViewBag.doctor, "تخصص را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DoctorId)
+        </div>
+
+        <div class="form-group">
+            <div>تاریخ</div>
+
+            <input type="date" class="date-picker" />
+        </div>
+
+    </div>
+    <br />
+   <div>
+
+        <div class="form-group">
+            <input type="submit" value="ذخیره" class="btn btn-primary" />
+            @Html.ActionLink("بازگشت به لیست نوبت ها", "Reserves", new { name = "" }, new { @class = "btn btn-info" })
+        </div>
+   </div>
+   
+}
+    

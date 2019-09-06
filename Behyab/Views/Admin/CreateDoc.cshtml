@@ -1,0 +1,74 @@
+﻿@model Behyab.Models.Doctor
+@{
+    ViewBag.Title = "افزودن پزشک";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="font-family:'B Mitra'">افزودن پزشک</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="col-lg-4" style="float:right;">
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Username)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.FirstName)
+            @Html.TextBoxFor(x => x.FirstName, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FirstName)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.LastName)
+            @Html.TextBoxFor(x => x.LastName, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.LastName)
+        </div>
+
+    </div>
+
+    <div class="col-lg-4" style="float:right;">
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.ExpertyId)
+            @Html.DropDownListFor(x => x.ExpertyId, (SelectList)ViewBag.expert, "تخصص را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.ExpertyId)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.ClinicId)
+            @Html.DropDownListFor(x => x.ClinicId, (SelectList)ViewBag.clinic, "نام درمانگاه را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.ClinicId)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.WeekId)
+            @Html.DropDownListFor(x => x.WeekId, (SelectList)ViewBag.week, "روز هفته را انتخاب کنید...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WeekId)
+        </div>
+
+    </div>
+
+    <div class="col-lg-4" style="float:right;">
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(x => x.ExpCode)
+            @Html.TextBoxFor(x => x.ExpCode, null, new { @class="form-control"})
+            @Html.ValidationMessageFor(x => x.ExpCode)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="ذخیره" class="btn btn-primary" />
+            @Html.ActionLink("بازگشت به لیست پزشکان", "Index", new { name = "" }, new { @class = "btn btn-info" })
+        </div>
+
+    </div>
+        }

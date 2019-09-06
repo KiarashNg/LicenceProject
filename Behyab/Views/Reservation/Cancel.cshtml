@@ -1,0 +1,66 @@
+﻿@model Behyab.Models.Reserve
+@{
+    ViewBag.Title = "لغو نوبت";
+    Layout = "~/Views/Shared/_LayoutLoggedInUser.cshtml";
+}
+
+<h2>لغو نوبت</h2>
+<div style="color:red;">@ViewBag.error</div>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.TextBoxFor(x => x.UserCode, null, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" value="جستجو" class="btn btn-primary" />
+    </div>
+}
+
+@if (Model != null)
+{
+    <table class="table" style="text-align:center;">
+        <tr>
+            
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.ClinicId)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.DoctorId)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.UserCode)
+            </th>
+
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(x => x.DateTime)
+            </th>
+        </tr>
+
+        <tr>
+           
+            <td>
+                @Model.Clinic.Name
+            </td>
+
+            <td>
+                @Model.Doctor.LastName
+            </td>
+
+            <td>
+                @Model.UserCode
+            </td>
+
+            <td>
+                @Model.DateTime
+            </td>
+
+            <td>
+                @Html.ActionLink("لغو", "DeleteReserve", new { Id = Model.Id }, new { onclick = "return confirm('آیا مطمئن فستید؟');", @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+}

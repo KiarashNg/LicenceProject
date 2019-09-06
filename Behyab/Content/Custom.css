@@ -1,0 +1,12 @@
+﻿
+.medical
+{
+    position: absolute;   
+    top: 15%;
+    left: 15%;
+    color: #0a2c5b;
+    text-shadow: 1px 1px 1px white, 5px 5px 5px white, 5px 5px 4px blue;
+    font-family: IranNastaliq,'IranNastaliq',tahoma;
+    font-size: 70px;
+}
+

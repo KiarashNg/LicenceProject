@@ -1,0 +1,53 @@
+﻿@model Behyab.Models.Users
+@{
+    ViewBag.Title = "ورود";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link type="text/css" rel="stylesheet" href="~/Content/User.css" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+        <h2 class="active"> سامانه نوبت دهی آنلاین </h2>
+
+        <div class="fadeIn first">
+            <img src="~/Content/img/1.png" id="icon" alt="User Icon" />
+        </div>
+
+        <div style="color:red;">
+            @ViewBag.log
+        </div>
+
+        <form>
+
+            <div style="color:red;">
+                @Html.ValidationMessageFor(x => x.Username)
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.Username, null, new { @id ="login",@class = "fadeIn second",@placeholder = "نام کاربری" })                
+            </div>
+
+            <div style="color:red;">
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+
+            <div>
+                @Html.PasswordFor(x => x.Password, new { @id = "password",@class = "fadeIn third", @placeholder = "کلمه عبور" })
+            </div>
+
+            <input type="submit" class="fadeIn fourth" value="ورود">
+        </form>
+
+        <div id="formFooter">
+            <a class="underlineHover" href="#">رمزعبور را فراموش کرده اید؟</a>
+        </div>
+
+    </div>
+</div>
+}
+

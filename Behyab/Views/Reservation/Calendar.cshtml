@@ -1,0 +1,51 @@
+﻿@model List<Behyab.Models.Doctor>
+@{
+    ViewBag.Title = "برنامه درمانگاه ها";
+    Layout = "~/Views/Shared/_LayoutLoggedInUser.cshtml";
+}
+
+<h2>برنامه درمانگاه ها</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().WeekId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().FirstName) و @Html.DisplayNameFor(x => x.FirstOrDefault().LastName)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ExpertyId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ClinicId)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.OrderBy(item => item.WeekId))
+    {
+    <tr class="@item.Id">
+        <td style="text-align:center;">
+            @item.Week.Day
+        </td>
+
+        <td style="text-align:center;">
+            دکتر @item.FirstName @item.LastName
+        </td>
+
+        <td style="text-align:center;">
+            @item.Experty.Name
+        </td>
+
+        <td style="text-align:center;">
+            @item.Clinic.Name
+        </td>
+
+    </tr>
+    }
+</table>
